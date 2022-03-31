@@ -8,7 +8,7 @@
 -     b. As well as we have many channels between bridge assisted pathway, created interference pattern.
 
 **Results:**
-Results shows a very different rates compare to no-cavity scenario suggesting a strong interferecene pathway which takes beyond traditional paradigm of chemistry.
+Results shows a very different rates compare to no-cavity scenario suggesting a strong interference pathway which takes beyond traditional paradigm of chemistry.
 
 
 
