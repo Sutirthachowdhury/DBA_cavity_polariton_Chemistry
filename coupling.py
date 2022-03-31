@@ -9,6 +9,8 @@ R0_BA = np.sqrt(2.0/(param.omega_c)**3)* param.xi * param.del_mu_BA
 R0_DA = np.sqrt(2.0/(param.omega_c)**3)* param.xi * param.del_mu_DA
 #------------------------------------------------------
 
+###--- adding new varible (energy bias)
+
 #------- allocations of variables ---------
 
 s_DB = np.zeros((param.nstate,param.nstate)) # D and B overlap
