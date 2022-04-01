@@ -8,9 +8,6 @@ R0_DB = np.sqrt(2.0/(param.omega_c)**3)* param.xi * param.del_mu_DB
 R0_BA = np.sqrt(2.0/(param.omega_c)**3)* param.xi * param.del_mu_BA
 R0_DA = np.sqrt(2.0/(param.omega_c)**3)* param.xi * param.del_mu_DA
 #------------------------------------------------------
-
-###--- adding new varible (energy bias)
-
 #------- allocations of variables ---------
 
 s_DB = np.zeros((param.nstate,param.nstate)) # D and B overlap
@@ -45,13 +42,6 @@ def getoverlap(R_0,param):
                              + np.sqrt(np.real(j))*delta(i,j-1)) 
 
     eigen, sprime = np.linalg.eigh(s) 
-    
-    #f = open("sprime_mat.txt","w+")
-    #for n in range(param.nstate):
-    #    for m in range(param.nstate):
-    #        f.write(f"{n} {m} {sprime[n,m]} \n")
-
-    #f.close()
 
     return sprime
 
@@ -61,16 +51,6 @@ def getoverlap(R_0,param):
 s_DB = getoverlap(R0_DB,param) # D and B overlaps
 s_BA = getoverlap(R0_BA,param) # B and A overlaps
 s_DA = getoverlap(R0_DA,param) # D and A overlaps
-
-#f = open("s_mat.txt","w+")
-#for n in range(param.nstate):
-#    for m in range(param.nstate):
-#        f.write(f"{n} {m} {s_DB[n,m]} \n")
-
-#f.close()
-
-#exit()
-
 
 #--------- calculation of V_DB (with channel n,l)---------------
 vdb = np.zeros((param.nfock,param.nbridge)) #light induced DB coupling
