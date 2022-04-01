@@ -1,4 +1,4 @@
-# DBA_cavity_polariton_Chemistry
+# Cavity Induced Interfering Electron Transfer Pathways for Donor(D)-Bridge(B)-Acceptor(A) Systems
 
 **Introduction:**
 
