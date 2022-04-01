@@ -7,25 +7,14 @@ electrodynamics (cQED) process that enable new reactivities in a photon-molecule
 
 DBA is a prototype model for the Macromolecular Electron transfer systems such as protein complexes or DNA. The Underlying electron transfer mechanism for these DBA system occurs through the superexchange pathway or in other wotds bridge mediated pathway. In this work, we derive an empirical rate expression, similar to Fermi’s Golden Rule (FGR) rate structure in presence with an optical cavity to properly describe the donor to acceptor rate for the DBA systems. Our work demonstrated that in presence of optical cavity one can create two different pathways for electron transfer. 
     
-    (A) cavity created direct transition through multiple channels between donor to acceptor which was not presentwithout cavity. 2. Through bridge   
-        transitions occur with multiple cavity created channels. This new electron transfer pathways offer a very different rate profile
-compare to no cavity scenario. From our rate calculation,
-it can be clearly observed that by tuning the properties
-of the cavity such as photon frequency or light-matter
-coupling strength one can obtain both suppression and
-enhancement of the reaction rate constants. This encour-
-aging rate calculations predicts the new mechanisms of
-electron transfer that can go beyond traditional paradigm
-of chemistry and opens up new possibilities to modulate
-the interference pathways by using the cavity properties   
+  (A) cavity created direct transition through multiple channels between donor to acceptor which was not present without cavity where the charge/electron       transfer can only occurs through one bridge (here in the system we only have one bridge) 
+  (B) Through bridge transitions occur with multiple cavity created channels. This new electron transfer pathways offer a very different rate profile 
+      (see result sections) compare to no cavity scenario. From our rate calculation, it can be clearly observed that by tuning the properties of the 
+      cavity such as photon frequency or light-matter coupling strength one can obtain both suppression and enhancement of the reaction rate constants. 
 
-- Note that direct Donor-acceptor overlap is not present without cavity. The charge/electron transfer can only possible through bridge. But this scenario can be changed/modulated significantly when molecule is coupled with optical cavity, which creates molecule-photon hybrid states. In the following paragraph we briefly mentioned the outcomes from this process.
+These encouraging rate calculations predicts the new mechanisms of electron transfer that can go beyond traditional paradigm of chemistry and opens up new possibilities to modulate the interference pathways by using the different tuning knobs of the cavity such as frequency of photon, light-matter coupling, quantum number of photon etc.   
 
-- In presence of optical cavity:
-    - we have new sets of direct Donor to acceptor channels (this channels are photon or light-matter hybrid states), created by cavity (cavity property)
-    - As well as we have many channels between bridge (creating virtual states) assisted pathway, created unique interference pattern.
-
-**Models:**
+**Model system:**
 
 
 
