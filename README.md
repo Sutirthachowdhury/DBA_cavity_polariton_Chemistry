@@ -1,6 +1,6 @@
 # DBA_cavity_polariton_Chemistry
 
-** Introduction: **
+**Introduction:**
 
 Tuning chemical reactivity by coupling molecular system to a photon field in an optical cavity has emerged as an exciting method beyond the traditional paradigms of chemistry[1? –13]. Theoretical investigations have played an important role in uncovering the underlying principles of the cavity quantum-
 electrodynamics (cQED) process that enable new reactivities in a photon-molecule hybrid system inside an optical cavity[4–9, 11? –20]. Despite encouraging progress, simulating accurate quantum dynamics of a molecular system that is coupled to a quantized photon mode in an optical cavity remains a challenging task.
