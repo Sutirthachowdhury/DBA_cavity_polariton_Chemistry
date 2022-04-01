@@ -10,7 +10,7 @@ class parameters():
     pi = 3.1415926  # value of pi
     diab_DB = 0.005/27.2114  # diabatic coupling betwn D and B
     diab_BA = 0.005/27.2114  # diabatic coupling betwn B and A
-    xi = 0.003/27.2114  # light-matter cooupling strength
+    xi = 0.001/27.2114  # light-matter cooupling strength
     mu_DB = 1.0 # transition dipole betwn D and B
     mu_BA = 1.0 # transition dipole betwn B and A
     lam = 0.65/27.2114 # solvent reorganization energy 

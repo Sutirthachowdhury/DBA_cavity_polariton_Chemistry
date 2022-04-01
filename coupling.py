@@ -129,7 +129,7 @@ for n in range(param.nfock):
     part  = part + np.exp(-param.beta*np.real(n)*param.omega_c)
 
 #--------- calculating net rate -------------------------
-f = open("rate_vs_delE.txt","w+")
+f = open("rate_vs_delE_LM_1mev.txt","w+")
 
 # this will be the total rate, array of energy-scan
 total_rate = np.zeros(param.nstep)
