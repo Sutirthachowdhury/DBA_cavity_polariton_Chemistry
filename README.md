@@ -22,3 +22,7 @@ These encouraging rate calculations predicts the new mechanisms of electron tran
 **preliminary results:**
 
 **References:**
+
+1. J. A. Hutchison, T. Schwartz, C. Genet, E. Devaux, and T. W. Ebbesen, Angew.Chem., Int. Ed. 51, 1592 (2012).
+2. A. Thomas, L. Lethuillier-Karl, K. Nagarajan, R. M. A. Vergauwe, J. George, T. Chervy, A. Shalabney, E. Devaux, C. Genet, J. Moran, and T. W. Ebbesen, Science 363, 615 (2019).
+3. 
