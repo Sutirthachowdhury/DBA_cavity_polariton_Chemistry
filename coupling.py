@@ -83,7 +83,7 @@ for g in range(param.nstep):
     for n in range(param.nfock):
         for m in range(param.nfock):
             for l in range(param.nbridge):
-                vda[n,m,g] = vda[n,m,g] - 0.5*vdb[n,l]*vba[l,m]*((1.0/(dg+(l-m)*param.omega_c)) \
+                vda[n,m,g] = vda[n,m,g] - 0.5*vdb[n,l]*vba[l,m]*((1.0/((dg+param.bias)+(l-m)*param.omega_c)) \
                     + (1.0/(dg+(l-n)*param.omega_c)))
 
 
