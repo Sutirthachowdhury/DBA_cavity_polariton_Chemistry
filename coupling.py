@@ -116,9 +116,11 @@ for g in range(param.nstep):
 
      dg  = (g*0.018374) + 10**-20
 
+     delg = param.bias*(((param.diab_BA)**2/((dg+param.bias)*dg))-1.0) 
+
      for n in range(param.nfock):
          for m in range(param.nfock):
-             k[n,m,g] = A[n,m,g]*np.exp(-(param.lam - (np.real(n)*param.omega_c) \
+             k[n,m,g] = A[n,m,g]*np.exp(-(delg+param.lam - (np.real(n)*param.omega_c) \
                   + (np.real(m)*param.omega_c))**2/(4.0*param.lam*(1.0/param.beta))) # in (ps)^-1 
 
 #-------- total partition function ---------------------
