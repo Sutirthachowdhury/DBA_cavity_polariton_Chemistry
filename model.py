@@ -20,3 +20,4 @@ class parameters():
     del_mu_DB = 5.0 # del_mu_DB = mu_DD - mu_BB (permanent dipole diff)
     del_mu_BA = 5.0 # del_mu_BA = mu_BB - mu_AA (permanent dipole diff)
     bias = 0.15/27.2114 # bias between Donor and Acceptor energy state
+    dE = 1.5/27.2114 # energy gap between Bridge and Donor.
