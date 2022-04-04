@@ -20,7 +20,7 @@ These encouraging rate calculations predicts the new mechanisms of electron tran
 
 **preliminary results:**
 
-***The manuscript is under construction and thus the preliminary results are not shown here for the privacy reason. Although, upon reasonable reason the author is open for discussions.***
+***The manuscript is under construction and thus the preliminary results are not shown here for the privacy reason. Although, upon reasonable request the author is open for questions and discussions.***
 
 **References:**
 
