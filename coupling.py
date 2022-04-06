@@ -3,6 +3,7 @@ from numpy import linalg as LA
 from model import parameters as param
 from numpy.random import random
 from scipy import linalg
+
 #------- some variables --------------------------
 R0_DB = np.sqrt(2.0/(param.omega_c)**3)* param.xi * param.del_mu_DB 
 R0_BA = np.sqrt(2.0/(param.omega_c)**3)* param.xi * param.del_mu_BA
@@ -109,6 +110,22 @@ for g in range(param.nstep):
             A[n,m,g] = A[n,m,g]*41341.37
 
 
+#------------- calculation of delg_nm term------------------------------
+
+delg = np.zeros((param.nfock,param.nfock,param.nstep))
+
+for g in range(param.nstep):
+
+    dg = (g*0.018374) + 10**-20
+
+    for n in range(param.nfock):
+        for m in range(param.nfock):
+            for l in range(param.nbridge):
+                delg[n,m,g] = delg[n,m,g] + vdb[n,l]*np.transpose(vdb[m,l])*(1.0/(dg+(l-n)*param.omega_c)) \
+                    - np.transpose(vba[l,n])*vba[l,m]*(1.0/((dg+param.bias)+(l-m)*param.omega_c))
+
+
+
 #------- rate for each channel with varygin Donor to acceptor energy gap--------
 k = np.zeros((param.nfock,param.nfock,param.nstep)) #rate for each channel
 
@@ -116,11 +133,9 @@ for g in range(param.nstep):
 
      dg  = (g*0.018374) + 10**-20
 
-     delg = param.bias*(((param.diab_BA)**2/((dg+param.bias)*dg))-1.0) 
-
      for n in range(param.nfock):
          for m in range(param.nfock):
-             k[n,m,g] = A[n,m,g]*np.exp(-(delg+param.lam - (np.real(n)*param.omega_c) \
+             k[n,m,g] = A[n,m,g]*np.exp(-(-param.bias+delg[n,m,g]+param.lam - (np.real(n)*param.omega_c) \
                   + (np.real(m)*param.omega_c))**2/(4.0*param.lam*(1.0/param.beta))) # in (ps)^-1 
 
 #-------- total partition function ---------------------
@@ -131,7 +146,7 @@ for n in range(param.nfock):
     part  = part + np.exp(-param.beta*np.real(n)*param.omega_c)
 
 #--------- calculating net rate -------------------------
-f = open("rate_vs_delE_LM_1mev.txt","w+")
+f = open("rate_vs_delE_withbias_0.15_LM_1mev_omega200mev.txt","w+")
 
 # this will be the total rate, array of energy-scan
 total_rate = np.zeros(param.nstep)
