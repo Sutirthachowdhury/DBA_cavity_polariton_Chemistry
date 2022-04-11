@@ -25,14 +25,18 @@ These encouraging rate calculations predicts the new mechanisms of electron tran
 
 **How to run the code:**
 
-Step1:
-First, you will locate three python (.py) files which are the source codes. Here are the functionals for the three codes.
+Step1: First, you will locate three python (.py) files which are the source codes. Here are the functionals for the three codes.
 
 1. coupling.py : outputs the reaction rate over energy gap between donor and bridge.
-2. coupling_marcus.py : outputs the reaction rate over the energy gap between donor and acceptor (reproduce invert Marcus pictures)
-3. coupling_scan_g.py : ouputs the reaction rate over the effective light-matter coupling strength (__g<sub>c</sub>__/__$\omega$<sub>c</sub>__)
+2. coupling_marcus.py : outputs the reaction rate over the energy gap between donor and acceptor (reproduce invert Marcus pictures).
+3. coupling_scan_g.py : ouputs the reaction rate over the effective light-matter coupling strength (__g<sub>c</sub>__/__w<sub>c</sub>__).
 
+Step2: you can run the code in your terminal or with supercomputer. 
 
+1. To run in terminal : type python3 "filename.py"
+2. To run with supercomputer : a. open the ".sbatch" file and see the last line which excutes the files in your computing nodes. Change accordingly. Next type "sbatch submit.sbatch" in your terminal.
+
+Step3: After executing the codes you will see the output data in a file named as "filename.txt". You can further visualize it by using Gnuplot, Matplotlib, excel, origin etc.. 
 
 **References:**
 
