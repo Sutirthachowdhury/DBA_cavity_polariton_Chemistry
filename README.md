@@ -1,4 +1,5 @@
 # Cavity Induced Interfering Electron Transfer Pathways for Donor(D)-Bridge(B)-Acceptor(A) Systems
+S. N. Chowdhury.
 
 **Introduction:**
 
@@ -21,6 +22,10 @@ These encouraging rate calculations predicts the new mechanisms of electron tran
 **preliminary results:**
 
 ***The manuscript is under construction and thus the preliminary results are not shown here for the privacy reason. Although, upon reasonable request the author is open for questions and discussions.***
+
+**How to run the code:**
+
+
 
 **References:**
 
