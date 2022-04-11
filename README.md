@@ -26,6 +26,11 @@ These encouraging rate calculations predicts the new mechanisms of electron tran
 **How to run the code:**
 
 Step1:
+First, you will locate three python (.py) files which are the source codes. Here are the functionals for the three codes.
+
+1. coupling.py : outputs the reaction rate over energy gap between donor and bridge.
+2. coupling_marcus.py : outputs the reaction rate over the energy gap between donor and acceptor (reproduce invert Marcus pictures)
+3. coupling_scan_g.py : ouputs the reaction rate over the effective light-matter coupling strength (__P<sub>k</sub>__)
 
 
 
