@@ -4,11 +4,7 @@ from model import parameters as param
 from numpy.random import random
 from scipy import linalg
 
-#------- some variables --------------------------
-R0_DB = np.sqrt(2.0/(param.omega_c)**3)* param.xi * param.del_mu_DB 
-R0_BA = np.sqrt(2.0/(param.omega_c)**3)* param.xi * param.del_mu_BA
-R0_DA = np.sqrt(2.0/(param.omega_c)**3)* param.xi * param.del_mu_DA
-#------------------------------------------------------
+
 #------- allocations of variables ---------
 
 s_DB = np.zeros((param.nstate,param.nstate)) # D and B overlap
@@ -48,51 +44,65 @@ def getoverlap(R_0,param):
 
 # =========== rate constant calculations =========================
 
-# ------ overlap terms ---------------------- 
-s_DB = getoverlap(R0_DB,param) # D and B overlaps
-s_BA = getoverlap(R0_BA,param) # B and A overlaps
-s_DA = getoverlap(R0_DA,param) # D and A overlaps
-
 #--------- calculation of V_DB (with channel n,l)---------------
-vdb = np.zeros((param.nfock,param.nbridge)) #light induced DB coupling
+vdb = np.zeros((param.nfock,param.nbridge,param.nstep)) #light induced DB coupling
 
-for n in range(param.nfock):
-    for l in range(param.nbridge):
+for g in range(param.nstep):
+    xi = g*3.6749303600696764*10**-6 + 10**-20
 
-        vdb[n,l] = param.diab_DB*s_DB[n,l] \
-            + param.xi*(param.mu_DB)*np.sqrt(np.real(l)+1)*(s_DB[n,l+1]) \
-            + param.xi*(param.mu_DB)*np.sqrt(np.real(l))*(s_DB[n,l-1])
+    R0_DB = np.sqrt(2.0/(param.omega_c)**3)* xi * param.del_mu_DB 
+
+    s_DB = getoverlap(R0_DB,param) # D and B overlaps
+
+    for n in range(param.nfock):
+        for l in range(param.nbridge):
+
+            vdb[n,l,g] = param.diab_DB*s_DB[n,l] \
+                + xi*(param.mu_DB)*np.sqrt(np.real(l)+1)*(s_DB[n,l+1]) \
+                + xi*(param.mu_DB)*np.sqrt(np.real(l))*(s_DB[n,l-1])
 
 
 #------ calculation of V_BA (with channel l,m)-----------------------
-vba = np.zeros((param.nbridge,param.nfock)) # light induced BA coupling
+vba = np.zeros((param.nbridge,param.nfock,param.nstep)) # light induced BA coupling
 
-for l in range(param.nbridge):
-    for m in range(param.nfock):
+for g in range(param.nstep):
+    xi = g*3.6749303600696764*10**-6 + 10**-20
 
-        vba[l,m] = param.diab_BA*s_BA[l,m] \
-            + param.xi*(param.mu_BA)*np.sqrt(np.real(m)+1)*(s_DB[l,m+1]) \
-            + param.xi*(param.mu_BA)*np.sqrt(np.real(m))*(s_DB[l,m-1])
+    R0_BA = np.sqrt(2.0/(param.omega_c)**3)* xi * param.del_mu_BA
+
+    s_BA = getoverlap(R0_BA,param) # B and A overlaps
+
+
+    for l in range(param.nbridge):
+        for m in range(param.nfock):
+
+            vba[l,m,g] = param.diab_BA*s_BA[l,m] \
+                + xi*(param.mu_BA)*np.sqrt(np.real(m)+1)*(s_DB[l,m+1]) \
+                + xi*(param.mu_BA)*np.sqrt(np.real(m))*(s_DB[l,m-1])
 
 #------ calculation of V_DA coupling term (for each n,m channels)------------
 vda = np.zeros((param.nfock,param.nfock,param.nstep)) # light induced DA coupling
 
 for g in range(param.nstep):
+    xi = g*3.6749303600696764*10**-6 + 10**-20
 
-    dg = (g*0.018374) + 10**-20
+    R0_DA = np.sqrt(2.0/(param.omega_c)**3)* xi * param.del_mu_DA
 
+    s_DA = getoverlap(R0_DA,param) # D and A overlaps
+
+   
     for n in range(param.nfock):
         for m in range(param.nfock):
             for l in range(param.nbridge):
-                vda[n,m,g] = vda[n,m,g] - 0.5*vdb[n,l]*vba[l,m]*((1.0/((dg+param.bias)+(l-m)*param.omega_c)) \
-                    + (1.0/(dg+(l-n)*param.omega_c)))
+                vda[n,m,g] = vda[n,m,g] - 0.5*vdb[n,l,g]*vba[l,m,g]*((1.0/((param.dE+param.bias)+(l-m)*param.omega_c)) \
+                    + (1.0/(param.dE+(l-n)*param.omega_c)))
 
 
 
     for n in range(param.nfock):
         for m in range(param.nfock):
             vda[n,m,g] = vda[n,m,g] \
-                + (((param.xi)**2 * param.mu_DB * param.mu_BA)/param.omega_c)*s_DA[n,m] 
+                + (((xi)**2 * param.mu_DB * param.mu_BA)/param.omega_c)*s_DA[n,m] 
 
 
 #----- prefactor for the rate calculation (for each channels) ---------------
@@ -101,7 +111,7 @@ A = np.zeros((param.nfock,param.nfock,param.nstep)) #total prefactor term
 
 for g in range(param.nstep):
 
-    dg  = (g*0.018374) + 10**-20
+    xi = g*3.6749303600696764*10**-6 + 10**-20
 
     for n in range(param.nfock):
         for m in range(param.nfock):
@@ -116,13 +126,13 @@ delg = np.zeros((param.nfock,param.nfock,param.nstep))
 
 for g in range(param.nstep):
 
-    dg = (g*0.018374) + 10**-20
+    xi = g*3.6749303600696764*10**-6 + 10**-20
 
     for n in range(param.nfock):
         for m in range(param.nfock):
             for l in range(param.nbridge):
-                delg[n,m,g] = delg[n,m,g] + vdb[n,l]*np.transpose(vdb[m,l])*(1.0/(dg+(l-n)*param.omega_c)) \
-                    - np.transpose(vba[l,n])*vba[l,m]*(1.0/((dg+param.bias)+(l-m)*param.omega_c))
+                delg[n,m,g] = delg[n,m,g] + vdb[n,l,g]*np.transpose(vdb[m,l,g])*(1.0/(param.dE+(l-n)*param.omega_c)) \
+                    - np.transpose(vba[l,n,g])*vba[l,m,g]*(1.0/((param.dE+param.bias)+(l-m)*param.omega_c))
 
 
 
@@ -130,13 +140,12 @@ for g in range(param.nstep):
 k = np.zeros((param.nfock,param.nfock,param.nstep)) #rate for each channel
 
 for g in range(param.nstep):
+    xi = g*3.6749303600696764*10**-6 + 10**-20
 
-     dg  = (g*0.018374) + 10**-20
-
-     for n in range(param.nfock):
-         for m in range(param.nfock):
-             k[n,m,g] = A[n,m,g]*np.exp(-(-param.bias+delg[n,m,g]+param.lam - (np.real(n)*param.omega_c) \
-                  + (np.real(m)*param.omega_c))**2/(4.0*param.lam*(1.0/param.beta))) # in (ps)^-1 
+    for n in range(param.nfock):
+        for m in range(param.nfock):
+            k[n,m,g] = A[n,m,g]*np.exp(-(-param.bias+delg[n,m,g]+param.lam - (np.real(n)*param.omega_c) \
+                + (np.real(m)*param.omega_c))**2/(4.0*param.lam*(1.0/param.beta))) # in (ps)^-1 
 
 #-------- total partition function ---------------------
 
@@ -146,14 +155,14 @@ for n in range(param.nfock):
     part  = part + np.exp(-param.beta*np.real(n)*param.omega_c)
 
 #--------- calculating net rate -------------------------
-f = open("rate_vs_delE_withbias_0.15_LM_4mev_omega200mev.txt","w+")
+f = open("rate_vs_gc_withbias_0.15_omega40mev.txt","w+")
 
 # this will be the total rate, array of energy-scan
 total_rate = np.zeros(param.nstep)
 
 for g in range(param.nstep):
 
-    dg = (g*0.018374) + 10**-20
+    xi =  g*3.6749303600696764*10**-6 + 10**-20
 
     for n in range(param.nfock):
         for m in range(param.nfock):
@@ -161,5 +170,5 @@ for g in range(param.nstep):
             total_rate[g] = total_rate[g] + k[n,m,g]*(np.exp(-param.beta*np.real(n)*param.omega_c)/part)
 
 
-    f.write(f"{dg*27.2114} {total_rate[g]} \n")        
+    f.write(f"{((xi*27.2114*1000.0)/(param.omega_c*27.2114*1000.0))} {total_rate[g]} \n")        
 f.close()
