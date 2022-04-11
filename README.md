@@ -34,7 +34,7 @@ Step1: First, you will locate three python (.py) files which are the source code
 Step2: you can run the code in your terminal or with supercomputer. 
 
 1. To run in terminal : type python3 "filename.py"
-2. To run with supercomputer : a. open the ".sbatch" file and see the last line which excutes the files in your computing nodes. Change accordingly. Next type "sbatch submit.sbatch" in your terminal.
+2. To run with supercomputer : (a). open the ".sbatch" file and see the last line which excutes the files in your computing nodes. (b). Change accordingly with your program and computing nodes and after that type "sbatch submit.sbatch" in your terminal.
 
 Step3: After executing the codes you will see the output data in a file named as "filename.txt". You can further visualize it by using Gnuplot, Matplotlib, excel, origin etc.. 
 
