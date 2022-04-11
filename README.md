@@ -30,7 +30,7 @@ First, you will locate three python (.py) files which are the source codes. Here
 
 1. coupling.py : outputs the reaction rate over energy gap between donor and bridge.
 2. coupling_marcus.py : outputs the reaction rate over the energy gap between donor and acceptor (reproduce invert Marcus pictures)
-3. coupling_scan_g.py : ouputs the reaction rate over the effective light-matter coupling strength (__g<sub>c</sub>__/__\omega<sub>c</sub>__)
+3. coupling_scan_g.py : ouputs the reaction rate over the effective light-matter coupling strength (__g<sub>c</sub>__/__$\omega$<sub>c</sub>__)
 
 
 
